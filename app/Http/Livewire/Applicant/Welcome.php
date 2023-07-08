@@ -28,7 +28,8 @@ class Welcome extends Component
                 $description = 'Examinee number doesn\'t exist'
             );
         }else{
-            dd($applicant);
+            return redirect()->route('applicant.pre-registration', $applicant);
+            // dd($applicant);
         }
     }
 }

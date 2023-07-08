@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Applicant;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,12 @@ Route::get('/dashboard', function () {
 Route::get('/applicants', function () {
     return view('admin.applicants');
 })->middleware(['auth', 'verified'])->name('applicants');
+
+Route::get('/applicant/pre-registration/{record}', function ($record) {
+    $applicant = Applicant::findOrFail($record);
+
+    return view('applicant.pre-registration-create', ['record' => $applicant]);
+})->name('applicant.pre-registration');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
