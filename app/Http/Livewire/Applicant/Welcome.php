@@ -3,9 +3,13 @@
 namespace App\Http\Livewire\Applicant;
 
 use Livewire\Component;
+use App\Models\Applicant;
+use WireUi\Traits\Actions;
+
 
 class Welcome extends Component
 {
+    use Actions;
     public $examinee_number;
 
     public function render()
@@ -15,6 +19,16 @@ class Welcome extends Component
 
     public function checkExamineeNumber()
     {
-        dd($this->examinee_number);
+        $applicant = Applicant::where('examinee_number', $this->examinee_number)->first();
+        if(!$applicant)
+        {
+            $this->examinee_number = null;
+            $this->dialog()->error(
+                $title = 'Not Found',
+                $description = 'Examinee number doesn\'t exist'
+            );
+        }else{
+            dd($applicant);
+        }
     }
 }

@@ -2,7 +2,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2">
         <div class="md:h-full order-2 md:order-none mx-auto mt-5">
             <img src="{{ asset('images/sksu1.png') }}" class="w-44 h-44 mx-auto" alt="">
-            <div class="mt-4">
+            <div class="mt-4 ml-24">
                 <a href="https://sksu.edu.ph/"
                     class="inline-flex space-x-4">
                     <span
@@ -25,7 +25,7 @@
                     </span>
                 </a>
             </div>
-            <div class="mt-8">
+            <div class="mt-10">
                 <span
                 class="text-4xl font-bold text-gray-700 tracking-wide uppercase">
                SKSU - TERTIARY </span>
@@ -51,7 +51,7 @@
         </div>
         </div>
         <div class="relative">
-            <img src="{{ asset('images/sksu_university.jpg') }}" class="rounded-lg md:h-full object-cover shadow-lg mb-10" alt="">
+            <img src="{{ asset('images/sksu_university.jpg') }}" class="rounded-2xl md:h-full object-cover shadow-xl mb-10" alt="">
         </div>
     </div>
 </div>
