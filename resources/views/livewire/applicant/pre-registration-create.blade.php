@@ -1,22 +1,103 @@
 <div class="flex justify-center items-center h-screen">
     <div class="overflow-hidden bg-white shadow sm:rounded-lg border-gray-400 border-2 w-3/4 h-3/4">
-      <div class="px-4 py-5 sm:p-6">
-        <div class="flex items-center w-full">
-          <img src="{{asset('images/sksu1.png')}}" class="ml-12 h-32 w-32" alt="">
-          <div class="ml-4">
-            <span class="text-2xl font-bold text-gray-800 tracking-wide uppercase">SULTAN KUDARAT STATE UNIVERSITY</span>
-            <div>
-              <span class="text-2xl font-semibold text-gray-800 tracking-wide uppercase">Pre-Registration</span>
+        <div class="px-4 py-5 sm:p-6">
+            <div class="flex items-center w-full">
+                <img src="{{asset('images/sksu1.png')}}" class="ml-12 h-32 w-32" alt="">
+                <div class="ml-4">
+                    <span class="text-2xl font-bold text-gray-800 tracking-wide uppercase">SULTAN KUDARAT STATE UNIVERSITY</span>
+                    <div>
+                        <span class="text-2xl font-semibold text-gray-800 tracking-wide uppercase">Pre-Registration</span>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-      <div class="grid grid-cols-1 h-3/4">
-        <div class="col-span-1 h-full border-black border-2 flex flex-grow">
-            <div class="flex flex-col justify-center h-full">
+        <div class="flex h-3/4">
+            <div class="col-span-1 w-full flex flex-col justify-between">
+                <div class="flex-grow mx-auto p-5">
+                    @if ($step === 1)
+                        <!-- Step 1 -->
+                        <div>
+                            Step 1
+                        </div>
+                    @elseif ($step === 2)
+                        <!-- Step 2 -->
+                        <div>
+                           <span class="sm:text-sm md:text-3xl text-green-600 tracking-widest font-medium">Kindly tick the campus and course you are qualified to enroll</span>
+                           <div class="flex justify-around mt-10 space-x-4">
+                            <x-select
+                            searchable
+                            label="Select Campus"
+                            placeholder="Select one status"
+                            wire:model.defer="model"
+                            class="w-full"
+                        >
+                            <x-select.option label="Pending" value="1" />
+                            <x-select.option label="In Progress" value="2" />
+                            <x-select.option label="Stuck" value="3" />
+                            <x-select.option label="Done" value="4" />
+                        </x-select>
+                        <x-select
+                            searchable
+                            label="Select Course"
+                            placeholder="Select one status"
+                            wire:model.defer="model"
+                            class="w-full"
+                        >
+                            <x-select.option label="Pending" value="1" />
+                            <x-select.option label="In Progress" value="2" />
+                            <x-select.option label="Stuck" value="3" />
+                            <x-select.option label="Done" value="4" />
+                        </x-select>
+                           </div>
+                           <div class="mt-16 space-y-3">
+                            <div>
+                                <span class="text-xl font-medium">Campus : </span>
+                               </div>
+                               <div>
+                                <span class="text-xl font-medium">Course : </span>
+                               </div>
+                           </div>
 
+                        </div>
+                    @elseif ($step === 3)
+                        <!-- Step 3 -->
+                        <div>
+                            Step 3
+                        </div>
+                    @endif
+                </div>
 
+                <!-- Step navigation buttons -->
+                <div class="p-5 flex justify-between">
+                    @if ($step == 1)
+                    <div class="">
+                        <button wire:click="logOut" class="px-4 py-4 bg-gray-400 text-white rounded-lg text-lg w-32">Logout</button>
+                    </div>
+                    @endif
+                    @if ($step > 1)
+                    <div class="">
+                        <button wire:click="prevStep" class="px-4 py-4 bg-gray-400 text-white rounded-lg text-lg w-32">Back</button>
+                    </div>
+                    @endif
+
+                    @if ($step < 3)
+                    <div class="flex items-center">
+                        <span class="sm:text-sm md:text-2xl tracking-wide {{$step == 1 ? 'text-green-500' : 'text-gray-500'}} px-3">Step 1</span>
+                        <span class="sm:text-sm md:text-2xl tracking-wide {{$step == 2 ? 'text-green-500' : 'text-gray-500'}} px-3">Step 2</span>
+                        <span class="sm:text-sm md:text-2xl tracking-wide {{$step == 3 ? 'text-green-500' : 'text-gray-500'}} px-3">Step 3</span>
+                        <button wire:click="nextStep" class="px-4 py-4 bg-green-400 text-white rounded-lg text-lg w-32 ml-10">Next</button>
+                    </div>
+                    @else
+                    <div class="flex items-center">
+                        <span class="sm:text-sm md:text-2xl tracking-wide {{$step == 1 ? 'text-green-500' : 'text-gray-500'}} px-3">Step 1</span>
+                        <span class="sm:text-sm md:text-2xl tracking-wide {{$step == 2 ? 'text-green-500' : 'text-gray-500'}} px-3">Step 2</span>
+                        <span class="sm:text-sm md:text-2xl tracking-wide {{$step == 3 ? 'text-green-500' : 'text-gray-500'}} px-3">Step 3</span>
+                        <button wire:click="submitForm" class="px-4 py-4 bg-green-400 text-white rounded-lg text-lg w-32 ml-10">Submit</button>
+                    </div>
+                    @endif
+                </div>
+            </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+</div>
