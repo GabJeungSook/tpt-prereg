@@ -17,18 +17,18 @@
                     @if ($step === 1)
                         <!-- Step 1 -->
                         <div>
-                            Step 1
+                            {{$record}}
                         </div>
                     @elseif ($step === 2)
                         <!-- Step 2 -->
                         <div>
-                           <span class="sm:text-sm md:text-3xl text-green-600 tracking-widest font-medium">Kindly tick the campus and course you are qualified to enroll</span>
+                           <span class="sm:text-sm md:text-3xl text-green-600 tracking-widest font-medium font-sans">Kindly tick the campus and course you are qualified to enroll</span>
                            <div class="flex justify-around mt-10 space-x-4">
                             <x-select
                             searchable
                             label="Select Campus"
-                            placeholder="Select one status"
-                            wire:model.defer="model"
+                            placeholder="Select one"
+                            wire:model="campus_id"
                             class="w-full"
                         >
                             <x-select.option label="Pending" value="1" />
@@ -39,8 +39,8 @@
                         <x-select
                             searchable
                             label="Select Course"
-                            placeholder="Select one status"
-                            wire:model.defer="model"
+                            placeholder="Select one"
+                            wire:model="course_id"
                             class="w-full"
                         >
                             <x-select.option label="Pending" value="1" />
@@ -51,18 +51,31 @@
                            </div>
                            <div class="mt-16 space-y-3">
                             <div>
-                                <span class="text-xl font-medium">Campus : </span>
+                                <span class="text-xl font-medium font-sans">Campus : {{$campus_id}}</span>
                                </div>
                                <div>
-                                <span class="text-xl font-medium">Course : </span>
+                                <span class="text-xl font-medium font-sans">Course : {{$course_id}}</span>
                                </div>
                            </div>
-
+                           <x-button class="mt-10 w-full" emerald label="Save" />
                         </div>
                     @elseif ($step === 3)
                         <!-- Step 3 -->
                         <div>
-                            Step 3
+                            <span class="sm:text-sm md:text-3xl text-green-600 tracking-widest font-medium font-sans">Conformation of Enrollment Form (CEF)</span>
+                            <div class="mt-10 space-x-8">
+                                <span class="sm:text-sm md:text-3xl text-gray-700 tracking-widest font-medium font-sans ">Download the form</span>
+                                <a href="#" class="sm:text-sm md:text-3xl text-green-600 tracking-widest font-medium font-sans underline cursor-pointer">Click to download</a>
+                                <div class="mt-5  text-xl text-gray-500 tracking-wide font-medium font-sans">
+                                    <span>Please confirm your intent to enroll as SKSU for this upcoming school year by completing<br> this form and uploading it through this platform</span>
+                                </div>
+                            </div>
+                            <div class="mt-10 space-x-8">
+                                <span class="sm:text-sm md:text-3xl text-gray-700 tracking-widest font-medium font-sans ">Upload Document</span>
+                                <div class="mt-5 bg-gray-100 p-4 rounded-lg">
+                                        {{$this->form}}
+                                </div>
+                            </div>
                         </div>
                     @endif
                 </div>
