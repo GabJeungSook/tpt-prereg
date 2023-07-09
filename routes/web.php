@@ -31,11 +31,25 @@ Route::get('/applicants', function () {
     return view('admin.applicants');
 })->middleware(['auth', 'verified'])->name('applicants');
 
+Route::get('/conformation-of-enrollment-form', function () {
+    return view('admin.enrollment-form');
+})->middleware(['auth', 'verified'])->name('enrollment-form');
+
+Route::get('/upload', function () {
+    return view('admin.upload');
+})->middleware(['auth', 'verified'])->name('upload');
+
 Route::get('/applicant/pre-registration/{record}', function ($record) {
     $applicant = Applicant::findOrFail($record);
 
     return view('applicant.pre-registration-create', ['record' => $applicant]);
 })->name('applicant.pre-registration');
+
+Route::get('/applicant/pre-registration/success/{record}', function ($record) {
+    $applicant = Applicant::findOrFail($record);
+
+    return view('applicant.pre-registration-success', ['record' => $applicant]);
+})->name('applicant.pre-registration-success');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

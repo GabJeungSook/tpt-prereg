@@ -9,4 +9,14 @@ class Applicant extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function attachments()
+    {
+        return $this->morphMany(Attachment::class, 'documentable');
+    }
+
+    public function program()
+    {
+        return $this->belongsTo(Program::class);
+    }
 }
