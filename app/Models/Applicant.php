@@ -19,4 +19,9 @@ class Applicant extends Model
     {
         return $this->belongsTo(Program::class);
     }
+
+    public function applicant_info()
+    {
+        return $this->hasOne(ApplicantInfo::class);
+    }
 }

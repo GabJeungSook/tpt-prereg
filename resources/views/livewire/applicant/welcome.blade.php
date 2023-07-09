@@ -32,7 +32,7 @@
             </div>
             <span
             class="text-6xl font-bold text-green-800 tracking-wide uppercase">
-           PLACEMENT TEST </span>
+           PRE-REGISTRATION </span>
            <div class="mt-4">
             <span
             class="text-2xl font-bold text-green-800 tracking-wide uppercase">

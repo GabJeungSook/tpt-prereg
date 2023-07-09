@@ -28,7 +28,7 @@ class Welcome extends Component
                 $description = 'Examinee number doesn\'t exist'
             );
         }else{
-            if (($applicant->program_id === null && $applicant->attachments()->count() === 0) || ($applicant->program_id !== null && $applicant->attachments()->count() === 0)) {
+            if ($applicant->is_done === 0) {
                 return redirect()->route('applicant.pre-registration', $applicant);
             } else {
                 return redirect()->route('applicant.pre-registration-success', $applicant);

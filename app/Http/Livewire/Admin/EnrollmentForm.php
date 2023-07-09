@@ -90,8 +90,9 @@ class EnrollmentForm extends Component implements Tables\Contracts\HasTable
                     $description = 'File was successfully updated'
                 );
             }),
-            Action::make('preview')
-            ->icon('heroicon-o-eye')
+            Action::make('download')
+            ->label('Download')
+            ->icon('heroicon-o-download')
             ->button()
             ->color('warning')
             ->url(fn (EnrollmentFormModel $record) => $this->getFileUrl($record->file_path))

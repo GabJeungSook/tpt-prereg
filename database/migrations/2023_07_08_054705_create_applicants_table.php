@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('program_id')->nullable();
             $table->string('examinee_number');
             $table->string('name');
+            $table->boolean('is_done')->default(0);
             $table->timestamps();
         });
     }
