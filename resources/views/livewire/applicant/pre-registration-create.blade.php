@@ -2,7 +2,7 @@
     <div class="overflow-hidden bg-white shadow sm:rounded-lg border-gray-300 border-2 w-3/4 h-3/4">
         <div class="px-4 py-5 sm:p-6">
             <div class="flex items-center w-full">
-                <img src="{{asset('images/sksu1.png')}}" class="ml-12 h-32 w-32" alt="">
+                <img src="{{asset('images/sksu1.png')}}" class="ml-12 h-28 w-28" alt="">
                 <div class="ml-4">
                     <span class="text-2xl font-bold text-gray-800 tracking-wide uppercase">SULTAN KUDARAT STATE UNIVERSITY</span>
                     <div>
@@ -13,11 +13,11 @@
         </div>
         <div class="flex h-3/4">
             <div class="col-span-1 w-full flex flex-col justify-between">
-                <div class="sm:mx-auto md:mx-48 p-5">
+                <div class="sm:mx-auto md:mx-48 p-2">
                     @if ($step === 1)
                         <!-- Step 1 -->
-                        <div class="font-sans text-3xl font-semibold tracking-wider uppercase">
-                            <div class="grid grid-cols-3 rounded-lg p-3">
+                        <div class="font-sans text-2xl font-semibold tracking-wider uppercase">
+                            <div class="grid grid-cols-3 rounded-lg p-1">
                                 @if($record->applicant_info === null)
                                 <div class="col-span-1 p-4">
                                     <x-input label="First Name" wire:model="first_name"/>
@@ -111,9 +111,9 @@
                         <!-- Step 2 -->
                         <div>
                             @if($record->program_id === null)
-                           <span class="sm:text-sm md:text-3xl text-green-600 tracking-widest font-medium font-sans">Kindly tick the campus and course you are qualified to enroll</span>
+                           <span class="sm:text-sm md:text-2xl text-green-600 tracking-wide font-medium font-sans uppercase">Kindly tick the campus and course you are qualified to enroll</span>
                            @else
-                           <span class="sm:text-sm md:text-3xl text-green-600 tracking-widest font-medium font-sans">You have already selected a course</span>
+                           <span class="sm:text-sm md:text-3xl text-green-600 tracking-widest font-medium font-sans uppercase">You have already selected a course</span>
                            @endif
                            <div class="flex justify-around mt-10 space-x-4">
                             @if($record->program_id === null)
@@ -162,16 +162,16 @@
                     @elseif ($step === 3)
                         <!-- Step 3 -->
                         <div>
-                            <span class="sm:text-sm md:text-3xl text-green-600 tracking-widest font-medium font-sans">Conformation of Enrollment Form (CEF)</span>
+                            <span class="sm:text-sm md:text-3xl text-green-600 tracking-wide font-medium font-sans">Conformation of Enrollment Form (CEF)</span>
                             <div class="mt-10 space-x-8">
-                                <span class="sm:text-sm md:text-3xl text-gray-700 tracking-widest font-medium font-sans ">Download the form</span>
-                                <a href="#" wire:click="downloadCEF" class="sm:text-sm md:text-3xl text-green-600 tracking-widest font-medium font-sans underline cursor-pointer">Click to download</a>
+                                <span class="sm:text-sm md:text-3xl text-gray-700 tracking-wide font-medium font-sans ">Download the form</span>
+                                <a href="#" wire:click="downloadCEF" class="sm:text-sm md:text-3xl text-green-600 tracking-wide font-medium font-sans underline cursor-pointer">Click to download</a>
                                 <div class="mt-5  text-xl text-gray-500 tracking-wide font-medium font-sans">
                                     <span>Please confirm your intent to enroll as SKSU for this upcoming school year by completing<br> this form and uploading it through this platform</span>
                                 </div>
                             </div>
                             <div class="mt-10 space-x-8">
-                                <span class="sm:text-sm md:text-3xl text-gray-700 tracking-widest font-medium font-sans ">Upload Document</span>
+                                <span class="sm:text-sm md:text-3xl text-gray-700 tracking-wide font-medium font-sans ">Upload Document</span>
                                 <div class="mt-5 bg-gray-100 p-4 rounded-lg">
                                         {{$this->form}}
                                 </div>

@@ -1,14 +1,14 @@
 <div class="h-screen flex justify-center items-center">
     <div class="grid grid-cols-1 md:grid-cols-2">
         <div class="md:h-full order-2 md:order-none mx-auto mt-5">
-            <img src="{{ asset('images/sksu1.png') }}" class="w-44 h-44 mx-auto" alt="">
+            <img src="{{ asset('images/sksu1.png') }}" class="w-32 h-32 mx-auto" alt="">
             <div class="mt-4 ml-24">
                 <a href="https://sksu.edu.ph/"
                     class="inline-flex space-x-4">
                     <span
-                        class="rounded bg-green-600 px-3 py-1 text-lg font-semibold text-white tracking-wide uppercase">
+                        class="rounded bg-green-600 px-3 py-1 text-md font-semibold text-white tracking-wide uppercase">
                         What's new </span>
-                    <span class="inline-flex items-center space-x-1 text-xl font-medium text-green-600">
+                    <span class="inline-flex items-center space-x-1 text-lg font-medium text-green-600">
                         <span>
                             Visit our official website
                         </span>
@@ -27,31 +27,31 @@
             </div>
             <div class="mt-10">
                 <span
-                class="text-4xl font-bold text-gray-700 tracking-wide uppercase">
+                class="text-3xl font-bold text-gray-700 tracking-wide uppercase">
                SKSU - TERTIARY </span>
             </div>
             <span
-            class="text-6xl font-bold text-green-800 tracking-wide uppercase">
+            class="text-5xl font-bold text-green-800 tracking-wide uppercase">
            PRE-REGISTRATION </span>
            <div class="mt-4">
             <span
-            class="text-2xl font-bold text-green-800 tracking-wide uppercase">
+            class="text-xl font-bold text-green-800 tracking-wide uppercase">
            SULTAN KUDARAT STATE UNIVERSITY </span>
            </div>
            <div class="mt-2">
             <span
-            class="text-xl font-semibold text-gray-700 tracking-wide">
+            class="text-lg font-semibold text-gray-700 tracking-wide">
            EJC Montilla, 9800 City of Tacurong Province of Sultan Kudarat </span>
-           <div class="mt-10 border-b-2 border-gray-300 w-full"></div>
+           <div class="mt-14 border-b-2 border-gray-300 w-full"></div>
            </div>
            <div class="mt-5 space-y-3">
             <h3 class="text-lg font-semibold text-gray-700 tracking-wide">Examinee Number:</h3>
-            <input wire:model="examinee_number" type="number" class="rounded-lg w-full text-lg py-4 focus:outline-none focus:border-green-800" placeholder="ex: 203665">
-            <button wire:click="checkExamineeNumber" class="rounded-lg w-full py-4 bg-green-500 text-white font-semibold text-lg hover:bg-green-800">Log in</button>
+            <input wire:model="examinee_number" type="number" class="rounded-lg w-full text-lg py-3 focus:outline-none focus:border-green-800" placeholder="ex: 203665">
+            <button wire:click="checkExamineeNumber" class="rounded-lg w-full py-3 bg-green-500 text-white font-semibold text-lg hover:bg-green-800">Log in</button>
         </div>
         </div>
         <div class="relative">
-            <img src="{{ asset('images/sksu_university.jpg') }}" class="rounded-2xl md:h-full object-cover shadow-xl mb-10" alt="">
+            <img src="{{ asset('images/sksu_university.jpg') }}" class="rounded-2xl md:h-full object-cover shadow-xl mb-19" alt="">
         </div>
     </div>
 </div>
