@@ -22,7 +22,7 @@ class Programs extends Component implements Tables\Contracts\HasTable
 
     protected function getTableQuery(): Builder
     {
-        return ProgramModel::query();
+        return ProgramModel::query()->orderBy('campus_id');
     }
 
     protected function getTableHeaderActions(): array
