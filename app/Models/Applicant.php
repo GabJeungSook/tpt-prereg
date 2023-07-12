@@ -20,6 +20,11 @@ class Applicant extends Model
         return $this->belongsTo(Program::class);
     }
 
+    public function campus()
+    {
+        return $this->belongsTo(Campus::class);
+    }
+
     public function applicant_info()
     {
         return $this->hasOne(ApplicantInfo::class);

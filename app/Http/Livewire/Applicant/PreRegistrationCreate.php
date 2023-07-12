@@ -242,7 +242,7 @@ class PreRegistrationCreate extends Component implements Forms\Contracts\HasForm
     public function mount()
     {
         $this->cef = EnrollmentForm::first();
-        $this->campus_id = 3;
+        $this->campus_id = $this->record->campus_id;
     }
 
     public function render()

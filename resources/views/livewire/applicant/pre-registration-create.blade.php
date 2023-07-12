@@ -167,15 +167,25 @@
                                 <span class="sm:text-sm md:text-3xl text-gray-700 tracking-wide font-medium font-sans ">Download the form</span>
                                 <a href="#" wire:click="downloadCEF" class="sm:text-sm md:text-3xl text-green-600 tracking-wide font-medium font-sans underline cursor-pointer">Click to download</a>
                                 <div class="mt-5  text-xl text-gray-500 tracking-wide font-medium font-sans">
-                                    <span>Please confirm your intent to enroll as SKSU for this upcoming school year by completing<br> this form and uploading it through this platform</span>
+                                    <span>Please confirm your intention to enroll as SKSU for this upcoming school year by completing<br> this form and uploading it through this platform</span>
                                 </div>
                             </div>
+                            @if ($record->attachments->count() === 0)
                             <div class="mt-10 space-x-8">
                                 <span class="sm:text-sm md:text-3xl text-gray-700 tracking-wide font-medium font-sans ">Upload Document</span>
                                 <div class="mt-5 bg-gray-100 p-4 rounded-lg">
                                         {{$this->form}}
                                 </div>
                             </div>
+                            @else
+                            <div class="mt-10">
+                                <span class="sm:text-sm md:text-xl text-green-600 tracking-widest font-medium font-sans uppercase">
+                                    You have already uploaded your Conformation of Enrollment Form(CEF)
+                                </span>
+                            </div>
+
+                            @endif
+
                         </div>
                     @endif
                 </div>
@@ -205,7 +215,11 @@
                         <span class="sm:text-sm md:text-2xl tracking-wide {{$step == 1 ? 'text-green-500' : 'text-gray-500'}} px-3">Step 1</span>
                         <span class="sm:text-sm md:text-2xl tracking-wide {{$step == 2 ? 'text-green-500' : 'text-gray-500'}} px-3">Step 2</span>
                         <span class="sm:text-sm md:text-2xl tracking-wide {{$step == 3 ? 'text-green-500' : 'text-gray-500'}} px-3">Step 3</span>
+                        @if ($record->attachments->count() === 0)
                         <button wire:click="submitApplication" class="px-4 py-4 bg-green-400 text-white rounded-lg text-lg w-32 ml-10">Submit</button>
+                        @else
+                        <button wire:click="logOut" class="px-4 py-4 bg-red-600 text-white rounded-lg text-lg w-32 ml-10 tracking-wide">EXIT</button>
+                        @endif
                     </div>
                     @endif
                 </div>
