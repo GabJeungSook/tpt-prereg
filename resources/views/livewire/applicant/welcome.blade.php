@@ -48,6 +48,16 @@
             <h3 class="text-lg font-semibold text-gray-700 tracking-wide">Examinee Number:</h3>
             <input wire:model="examinee_number" type="number" class="rounded-lg w-full text-lg py-3 focus:outline-none focus:border-green-800" placeholder="ex: 203665">
             <button wire:click="checkExamineeNumber" class="rounded-lg w-full py-3 bg-green-500 text-white font-semibold text-lg hover:bg-green-800">Log in</button>
+            <div class="">
+                {{-- <a class="ml-2 text-lg text-green-600 underline" target="_blank" href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&to=tpt@sksu.edu.ph&su=TPT+PRE-REGISTRATION+HELPDESK&body=Full+Name%3A%0D%0AExaminee+Number%3A%0D%0A%0D%0AConcern%3A">Need Help? Send us an email here.<img src="gmail.svg" alt="Gmail" class="ml-1 h-4 w-4 inline-block align-middle"></a> --}}
+                <a class="ml-2 text-lg text-green-600 underline" target="_blank" href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&to=tpt@sksu.edu.ph&su=TPT+PRE-REGISTRATION+HELPDESK&body=Full+Name%3A%0D%0AExaminee+Number%3A%0D%0A%0D%0AConcern%3A">Need Help? Send us an email here.
+                    <svg class="ml-1 h-4 w-4 inline-block align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                      </svg>
+
+                </a>
+
+            </div>
         </div>
         </div>
         <div class="relative">
