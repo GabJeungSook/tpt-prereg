@@ -2,16 +2,17 @@
 
 namespace App\Http\Livewire\Admin;
 
+use DB;
 use Filament\Forms;
 use Filament\Tables;
+use App\Models\Campus;
 use Livewire\Component;
-use DB;
+use WireUi\Traits\Actions;
+use App\Models\EnrollmentForm;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ActionGroup;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\Applicant as ApplicantModel;
-use App\Models\EnrollmentForm;
-use WireUi\Traits\Actions;
 
 class Applicant extends Component implements Tables\Contracts\HasTable
 {
@@ -34,6 +35,7 @@ class Applicant extends Component implements Tables\Contracts\HasTable
             ->action(function (array $data): void {
                     DB::beginTransaction();
                     ApplicantModel::create([
+                        'campus_id' => $data['campus_id'],
                         'examinee_number' => $data['examinee_number'],
                         'name' => $data['name'],
                      ]);
@@ -48,7 +50,8 @@ class Applicant extends Component implements Tables\Contracts\HasTable
             })
             ->form([
                 Forms\Components\TextInput::make('examinee_number')->required()->numeric(),
-                Forms\Components\TextInput::make('name')->required()
+                Forms\Components\TextInput::make('name')->required(),
+                Forms\Components\Select::make('campus_id')->label('Campus')->options(Campus::all()->pluck('name', 'id'))->required()
             ])
         ];
     }
@@ -76,15 +79,18 @@ class Applicant extends Component implements Tables\Contracts\HasTable
                 ->mountUsing(fn (Forms\ComponentContainer $form, ApplicantModel $record) => $form->fill([
                     'examinee_number' => $record->examinee_number,
                     'name' => $record->name,
+                    'campus_id' => $record->campus_id,
                 ]))
                 ->form([
                     Forms\Components\TextInput::make('examinee_number')->required()->numeric(),
-                    Forms\Components\TextInput::make('name')->required()
+                    Forms\Components\TextInput::make('name')->required(),
+                    Forms\Components\Select::make('campus_id')->label('Campus')->options(Campus::all()->pluck('name', 'id'))->required()
                 ])
                 ->action(function (ApplicantModel $record, array $data): void {
                     DB::beginTransaction();
                     $record->examinee_number = $data['examinee_number'];
                     $record->name = $data['name'];
+                    $record->campus_id = $data['campus_id'];
                     $record->save();
                     DB::commit();
                     $this->dialog()->success(
@@ -103,7 +109,7 @@ class Applicant extends Component implements Tables\Contracts\HasTable
                     Forms\Components\TextInput::make('examinee_number')->label('Examinee Number'),
                     Forms\Components\TextInput::make('name'),
                     Forms\Components\TextInput::make('campus')
-                    ->formatStateUsing(fn ($record) => $record->program_id != null ? $record->program?->campus->name : 'NOT YET SELECTED'),
+                    ->formatStateUsing(fn ($record) => $record->campus_id != null ? $record->campus->name : 'NOT YET SELECTED'),
                     Forms\Components\TextInput::make('course')
                     ->formatStateUsing(fn ($record) => $record->program_id != null ? $record->program?->name : 'NOT YET SELECTED'),
                 ]),
