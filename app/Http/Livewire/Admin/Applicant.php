@@ -137,11 +137,13 @@ class Applicant extends Component implements Tables\Contracts\HasTable
     protected function getTableColumns(): array
     {
         return [
-            Tables\Columns\TextColumn::make('examinee_number')->searchable(),
+            Tables\Columns\TextColumn::make('examinee_number')->label('Examinee Number')->searchable(),
+            Tables\Columns\TextColumn::make('campus.name')->label('Campus')->searchable()->sortable(),
             Tables\Columns\TextColumn::make('name')
             ->formatStateUsing(fn (ApplicantModel $record) => strtoupper($record->name))
-            ->searchable(),
+            ->searchable()->sortable(),
             Tables\Columns\BadgeColumn::make('is_done')
+            ->sortable()
             ->label('Applied')
             ->enum([
                 0 => 'No',
