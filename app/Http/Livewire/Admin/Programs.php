@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Models\Program as ProgramModel;
 
 
+
 class Programs extends Component implements Tables\Contracts\HasTable
 {
     use Tables\Concerns\InteractsWithTable;
