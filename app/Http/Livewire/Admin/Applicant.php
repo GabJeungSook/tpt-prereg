@@ -71,6 +71,23 @@ class Applicant extends Component implements Tables\Contracts\HasTable
                 $fileName = strtoupper($record->name).'_SKSU_CEF.docx';
                 return response()->download($filePath, $fileName);
             }),
+            Action::make('delete_cef')
+            ->label('Remove CEF')
+            ->icon('heroicon-o-trash')
+            ->button()
+            ->color('danger')
+            ->visible(fn ($record) => $record->is_done)
+            ->action(function ($record){
+                DB::beginTransaction();
+                $record->attachments->first()->delete();
+                $record->is_done = 0;
+                $record->save();
+                DB::commit();
+                $this->dialog()->success(
+                    $title = 'Success',
+                    $description = 'CEF was successfully removed'
+                );
+            })->requiresConfirmation(),
             ActionGroup::make([
                 Action::make('edit')
                 ->icon('heroicon-o-pencil')
@@ -134,8 +151,7 @@ class Applicant extends Component implements Tables\Contracts\HasTable
                 'danger' => 0,
                 'success' => 1,
             ])
-            ->searchable(),
-            Tables\Columns\TextColumn::make('name')
+            ->searchable()
         ];
     }
 
