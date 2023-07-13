@@ -159,6 +159,7 @@ class PreRegistrationCreate extends Component implements Forms\Contracts\HasForm
 
     public function save_info()
     {
+        $this->validateCurrentStep();
         DB::beginTransaction();
         ApplicantInfo::create([
             'applicant_id' => $this->record->id,
