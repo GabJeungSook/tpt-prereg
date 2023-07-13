@@ -114,7 +114,7 @@ class Applicant extends Component implements Tables\Contracts\HasTable
                         $title = 'Success',
                         $description = 'Applicant was successfully updated'
                     );
-                }),
+                })->visible(fn ($record) => $record->is_done === 0),
                 Tables\Actions\ViewAction::make()
                 ->color('primary')
                 ->mountUsing(fn (Forms\ComponentContainer $form, ApplicantModel $record) => $form->fill([
