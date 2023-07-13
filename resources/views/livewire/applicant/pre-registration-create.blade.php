@@ -1,5 +1,5 @@
 <div class="flex justify-center items-center h-screen">
-    <div class="overflow-hidden bg-white shadow sm:rounded-lg border-gray-300 border-2 w-3/4 h-3/4">
+    <div class="overflow-hidden bg-white shadow sm:rounded-lg border-gray-300 border-2 w-3/4 min-h-3/4">
         <div class="flex justify-between px-4 py-5 sm:p-6">
             <div class="flex items-center w-full">
                 <img src="{{asset('images/sksu1.png')}}" class="ml-12 h-28 w-28" alt="">
