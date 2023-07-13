@@ -45,7 +45,7 @@ class Report extends Component
             });
         }
 
-        $this->students = $query;
+        $this->students = $query->get();
 
         return view('livewire.admin.report', [
             'campuses' => $campuses,
