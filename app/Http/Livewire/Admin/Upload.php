@@ -16,6 +16,7 @@ class Upload extends Component
 
     public $applicants;
     public $applicants_isulan;
+    public $applicants_access;
 
     public function uploadApplicants()
     {
@@ -74,6 +75,42 @@ class Upload extends Component
                 ]);
             }
         }
+
+
+
+        $this->dialog()->success(
+            $title = 'Success',
+            $description = 'Data uploaded'
+        );
+    }
+
+    public function uploadApplicantsAccess()
+    {
+        $csvContents = Storage::get($this->applicants_access->getClientOriginalName());
+        $csvReader = Reader::createFromString($csvContents);
+        $csvRecords = $csvReader->getRecords();
+
+        foreach ($csvRecords as $csvRecord) {
+            $examineeNumber = $csvRecord[0];
+
+            // Check if the examinee number already exists in the database
+            $existingApplicant = Applicant::where('examinee_number', $examineeNumber)->first();
+
+            if (!$existingApplicant) {
+                // Examinee number does not exist, create a new record
+                Applicant::create([
+                    'examinee_number' => $examineeNumber,
+                    'name' => $csvRecord[1],
+                    'campus_id' => 1,
+                ]);
+            }else{
+                $existingApplicant->update([
+                    'campus_id' => 1,
+                ]);
+            }
+        }
+
+
 
         $this->dialog()->success(
             $title = 'Success',
