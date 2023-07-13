@@ -47,7 +47,7 @@ class PreRegistrationCreate extends Component implements Forms\Contracts\HasForm
         return [
             Forms\Components\FileUpload::make('attachment')
                 ->directory('application-forms')->preserveFilenames()
-                ->label('Conformation of Enrollment Form (CEF)')->required(),
+                ->label('Confirmation of Enrollment Form (CEF)')->required(),
         ];
     }
 

@@ -39,7 +39,7 @@ Route::get('/applicant-details', function () {
     return view('admin.applicant-details');
 })->middleware(['auth', 'verified'])->name('applicant-details');
 
-Route::get('/conformation-of-enrollment-form', function () {
+Route::get('/Confirmation-of-enrollment-form', function () {
     return view('admin.enrollment-form');
 })->middleware(['auth', 'verified'])->name('enrollment-form');
 

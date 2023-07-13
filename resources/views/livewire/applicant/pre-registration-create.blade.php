@@ -166,7 +166,7 @@
                     @elseif ($step === 3)
                         <!-- Step 3 -->
                         <div>
-                            <span class="sm:text-sm md:text-3xl text-green-600 tracking-wide font-medium font-sans">Conformation of Enrollment Form (CEF)</span>
+                            <span class="sm:text-sm md:text-3xl text-green-600 tracking-wide font-medium font-sans">Confirmation of Enrollment Form (CEF)</span>
                             <div class="mt-10 space-x-8">
                                 <span class="sm:text-sm md:text-3xl text-gray-700 tracking-wide font-medium font-sans ">Download the form</span>
                                 <a href="#" wire:click="downloadCEF" class="sm:text-sm md:text-3xl text-green-600 tracking-wide font-medium font-sans underline cursor-pointer">Click to download</a>
@@ -184,7 +184,7 @@
                             @else
                             <div class="mt-10">
                                 <span class="sm:text-sm md:text-xl text-green-600 tracking-widest font-medium font-sans uppercase">
-                                    You have already uploaded your Conformation of Enrollment Form(CEF)
+                                    You have already uploaded your Confirmation of Enrollment Form(CEF)
                                 </span>
                             </div>
 

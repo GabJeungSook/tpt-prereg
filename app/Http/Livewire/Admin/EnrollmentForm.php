@@ -56,7 +56,7 @@ class EnrollmentForm extends Component implements Tables\Contracts\HasTable
             ->form([
                 Forms\Components\FileUpload::make('file_path')
                 ->directory('enrollment-forms')->preserveFilenames()
-                ->label('Conformation of Enrollment Form')->required(),
+                ->label('Confirmation of Enrollment Form')->required(),
             ])
         ];
     }
@@ -77,7 +77,7 @@ class EnrollmentForm extends Component implements Tables\Contracts\HasTable
             ->form([
                 Forms\Components\FileUpload::make('file_path')
                 ->directory('enrollment-forms')->preserveFilenames()
-                ->label('Conformation of Enrollment Form')->required(),
+                ->label('Confirmation of Enrollment Form')->required(),
             ])
             ->action(function (EnrollmentFormModel $record, array $data): void {
                 DB::beginTransaction();
