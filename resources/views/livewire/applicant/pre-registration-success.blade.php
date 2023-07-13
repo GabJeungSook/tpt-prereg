@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="">
-                <span class="text-red-500">This examinee number belongs to: <br><span class="font-semibold">{{$record->name}}</span></span>
+                <span class="text-red-500 text-xs">This examinee number belongs to: <br><span class="font-semibold">{{$record->name}}</span></span>
             </div>
         </div>
         <div class="flex h-3/4">
