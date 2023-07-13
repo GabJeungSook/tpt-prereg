@@ -35,6 +35,10 @@ Route::get('/programs', function () {
     return view('admin.programs');
 })->middleware(['auth', 'verified'])->name('programs');
 
+Route::get('/applicant-details', function () {
+    return view('admin.applicant-details');
+})->middleware(['auth', 'verified'])->name('applicant-details');
+
 Route::get('/conformation-of-enrollment-form', function () {
     return view('admin.enrollment-form');
 })->middleware(['auth', 'verified'])->name('enrollment-form');
