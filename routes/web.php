@@ -47,6 +47,10 @@ Route::get('/upload', function () {
     return view('admin.upload');
 })->middleware(['auth', 'verified'])->name('upload');
 
+Route::get('/reports', function () {
+    return view('admin.report');
+})->middleware(['auth', 'verified'])->name('report');
+
 Route::get('/applicant/pre-registration/{record}', function ($record) {
     $applicant = Applicant::findOrFail($record);
 
