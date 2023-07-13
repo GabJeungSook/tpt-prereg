@@ -159,7 +159,29 @@ class PreRegistrationCreate extends Component implements Forms\Contracts\HasForm
 
     public function save_info()
     {
-        $this->validateCurrentStep();
+        $this->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'birthplace' => 'required',
+            'birthday' => 'required',
+            'present_address' => 'required',
+            'permanent_address' => 'required',
+            'contact_number' => 'required',
+            'gender' => 'required',
+            'religion' => 'required',
+            'tribe' => 'required',
+        ],[
+            'first_name.required' => 'Please enter your first name',
+            'last_name.required' => 'Please enter your last name',
+            'birthplace.required' => 'Please enter your place of birth',
+            'birthday.required' => 'Please enter your date of birth',
+            'present_address.required' => 'Please enter your present address',
+            'permanent_address.required' => 'Please enter your premanent address',
+            'contact_number.required' => 'Please enter your contact number',
+            'gender.required' => 'Please select your gender',
+            'religion.required' => 'Please enter your religion',
+            'tribe.required' => 'Please enter your tribe'
+        ]);
         DB::beginTransaction();
         ApplicantInfo::create([
             'applicant_id' => $this->record->id,
@@ -176,11 +198,12 @@ class PreRegistrationCreate extends Component implements Forms\Contracts\HasForm
             'tribe' => $this->tribe,
         ]);
         DB::commit();
+        $this->step++;
         $this->dialog()->success(
             $title = 'Success',
             $description = 'Data was successfully saved'
         );
-        $this->step++;
+
     }
 
     public function save_course()
