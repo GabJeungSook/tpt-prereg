@@ -1,6 +1,6 @@
 <div class="flex justify-center items-center h-screen">
     <div class="overflow-hidden bg-white shadow sm:rounded-lg border-gray-300 border-2 w-3/4 h-3/4">
-        <div class="px-4 py-5 sm:p-6">
+        <div class="flex justify-between px-4 py-5 sm:p-6">
             <div class="flex items-center w-full">
                 <img src="{{asset('images/sksu1.png')}}" class="ml-12 h-28 w-28" alt="">
                 <div class="ml-4">
@@ -9,6 +9,10 @@
                         <span class="text-2xl font-semibold text-gray-800 tracking-wide uppercase">Pre-Registration</span>
                     </div>
                 </div>
+
+            </div>
+            <div class="">
+                <span class="text-red-500">This examinee number belongs to: <br><span class="font-semibold">{{$record->name}}</span></span>
             </div>
         </div>
         <div class="flex h-3/4">
