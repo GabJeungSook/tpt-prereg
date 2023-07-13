@@ -94,8 +94,25 @@ class ApplicantDetails extends Component implements Tables\Contracts\HasTable
                 ->color('danger')
                 ->action(fn ($record) => $record->delete())
                 ->requiresConfirmation()
-                ->visible(fn ($record) => $record->applicant->is_done === 0)
-                ])
+                ->visible(fn ($record) => $record->applicant->is_done === 0 && $record->applicant->program_id === null),
+                Action::make('remove_program')
+                ->icon('heroicon-o-trash')
+                ->button()
+                ->color('danger')
+                ->action(function ($record) {
+                    $applicant = Applicant::where('id', $record->applicant_id)->first();
+                    $applicant->program_id = null;
+                    $applicant->save();
+
+                    $this->dialog()->success(
+                        $title = 'Success',
+                        $description = 'Program selected was successfully removed'
+                    );
+                })
+                ->requiresConfirmation()
+                ->visible(fn ($record) => $record->applicant->program_id != null)
+            ]),
+
         ];
     }
 
