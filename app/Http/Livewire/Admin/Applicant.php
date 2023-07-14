@@ -10,6 +10,7 @@ use Livewire\Component;
 use WireUi\Traits\Actions;
 use App\Models\EnrollmentForm;
 use Filament\Tables\Actions\Action;
+use Illuminate\Support\Facades\Storage;
 use Filament\Tables\Actions\ActionGroup;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\Applicant as ApplicantModel;
@@ -56,6 +57,16 @@ class Applicant extends Component implements Tables\Contracts\HasTable
         ];
     }
 
+    public function downloadAttachment($attachmentId)
+    {
+        $attachment = $this->applicant->attachments()->find($attachmentId);
+        if ($attachment) {
+            $path = $attachment->path;
+            $documentName = $attachment->document_name;
+            return Storage::download($path, $documentName);
+        }
+    }
+
     public function getTableActions()
     {
         return [
@@ -66,10 +77,12 @@ class Applicant extends Component implements Tables\Contracts\HasTable
             ->color('warning')
             ->visible(fn ($record) => $record->is_done)
             ->action(function ($record) {
-                $enrollment_form = EnrollmentForm::first();
-                $filePath = storage_path('app/public/'.$enrollment_form->file_path);
-                $fileName = strtoupper($record->name).'_SKSU_CEF.docx';
-                return response()->download($filePath, $fileName);
+                $attachment = $record->attachments()->where('documentable_id', $record->id)->first();
+                if ($attachment) {
+                    $path = $attachment->path;
+                    $documentName = $attachment->document_name;
+                    return Storage::download($path, $documentName);
+                }
             }),
             Action::make('delete_cef')
             ->label('Remove CEF')
