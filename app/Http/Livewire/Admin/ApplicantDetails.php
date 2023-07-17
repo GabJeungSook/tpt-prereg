@@ -102,6 +102,7 @@ class ApplicantDetails extends Component implements Tables\Contracts\HasTable
                 ->action(function ($record) {
                     $applicant = Applicant::where('id', $record->applicant_id)->first();
                     $applicant->program_id = null;
+                    $applicant->is_done = 0;
                     $applicant->save();
 
                     $this->dialog()->success(
