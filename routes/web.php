@@ -16,7 +16,7 @@ use App\Models\Applicant;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('disabled-applicant-view');
 });
 
 Route::get('/admin', function () {
@@ -51,17 +51,17 @@ Route::get('/reports', function () {
     return view('admin.report');
 })->middleware(['auth', 'verified'])->name('report');
 
-Route::get('/applicant/pre-registration/{record}', function ($record) {
-    $applicant = Applicant::findOrFail($record);
+// Route::get('/applicant/pre-registration/{record}', function ($record) {
+//     $applicant = Applicant::findOrFail($record);
 
-    return view('applicant.pre-registration-create', ['record' => $applicant]);
-})->name('applicant.pre-registration');
+//     return view('applicant.pre-registration-create', ['record' => $applicant]);
+// })->name('applicant.pre-registration');
 
-Route::get('/applicant/pre-registration/success/{record}', function ($record) {
-    $applicant = Applicant::findOrFail($record);
+// Route::get('/applicant/pre-registration/success/{record}', function ($record) {
+//     $applicant = Applicant::findOrFail($record);
 
-    return view('applicant.pre-registration-success', ['record' => $applicant]);
-})->name('applicant.pre-registration-success');
+//     return view('applicant.pre-registration-success', ['record' => $applicant]);
+// })->name('applicant.pre-registration-success');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
